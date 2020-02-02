@@ -19,6 +19,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .line {
@@ -51,12 +52,36 @@ a {
   clip: rect(auto, 0.3em, 0.3em, auto);
 }
 
+.cryptedmail {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0.5vw 1vw;
+}
+
+.cryptedmail:after {
+  content: attr(data-name) '@' attr(data-domain) '.' attr(data-tld);
+  font-size: 1vw;
+}
+
 @media screen and (max-width: 700px) {
   .line {
     font-size: 15vw;
   }
   wbr {
     display: block;
+  }
+  .cryptedmail {
+    margin: 1.5vw;
+  }
+  .cryptedmail:after {
+    font-size: 4vw;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .cryptedmail:after {
+    font-size: 2vw;
   }
 }
 
